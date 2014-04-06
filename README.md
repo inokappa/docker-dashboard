@@ -1,4 +1,4 @@
-# Dashing for Docker
+# Docker Dashboard
 
 ## Screen Shot
 
