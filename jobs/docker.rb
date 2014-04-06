@@ -3,6 +3,7 @@ run_docker_list = Hash.new({ value: 0 })
 all_docker_list = Hash.new({ value: 0 })
 #
 SCHEDULER.every '10s' do 
+  # Please Change Docker API ENDPOINT
   Docker.url='http://172.17.42.1:4243/'
   #
   cons_run = Docker::Container.all(:running => true)
