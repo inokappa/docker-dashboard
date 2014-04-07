@@ -11,6 +11,7 @@
 
  * `CentOS` や `Amazon Linux` の場合には `ruby20-devel.x86_64` のインストールをお忘れなく（`eventmachine` のインストールでコケることがある）
  * `io-console` という `gem` も必要になるかもしれないので `gem install --no-ri --no-rdoc io-console` もしておくと良いかも
+ * `Docker` の `Remote API` を有効にしておくこともお忘れなく...
 
 #### git clone
 
@@ -54,4 +55,14 @@ dashing start
 
 ## More Infomation
 
+#### dashing について
+
 Check out http://shopify.github.com/dashing for more information.
+
+#### Amazon Linux で Docker の Remote API を有効にする方法
+
+`/etc/sysconfig/docker` に以下を追加して `docker` を再起動しましょう。
+
+```
+other_args="-H tcp://0.0.0.0:4243"
+```
