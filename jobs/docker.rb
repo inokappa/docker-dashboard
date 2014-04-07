@@ -26,4 +26,10 @@ SCHEDULER.every '10s' do
   count = (cons_run.size.to_f / cons_all.size.to_f) * 100
   send_event('countmater', { value: count.round } )
   send_event('count', { current: cons_run.size } )
+  #
+  mem_t = %x[ cat /proc/meminfo | grep MemTotal: | awk '{print $2}' ]
+  mem_f = %x[ cat /proc/meminfo | grep MemFree: | awk '{print $2}' ]
+  mem_used = ( mem_f.to_f / mem_t.to_f) * 100
+  send_event('memmater', { value: mem_used.round } )
+
 end
