@@ -7,6 +7,10 @@
 
 ##  使い方
 
+#### 事前準備
+
+ * `CentOS` や `Amazon Linux` の場合には `ruby20-devel.x86_64` のインストールをお忘れなく（`eventmachine` のインストールでコケることがある）
+
 #### git clone
 
 ```
