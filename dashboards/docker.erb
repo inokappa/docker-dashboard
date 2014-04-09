@@ -2,19 +2,22 @@
 <div class="gridster">
   <ul>
     <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
-      <div data-id="docker" data-view="Text" data-title="Docker Dashboard" data-text="This is your shiny new dashboard." data-moreinfo="Protip: You can drag the widgets around!"></div>
+      <div data-id="docker" data-view="Text" data-title="Docker Dashboard" data-text="" data-moreinfo=""></div>
     </li>
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="countmater" data-view="Meter" data-title="Container Performance" data-min="0" data-max="100"></div>
+      <div data-id="cpumater" data-view="Meter" data-title="CPU Used(%)" data-min="0" data-max="100"></div>
+    </li>
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="memmater" data-view="Meter" data-title="Memory Used(%)" data-min="0" data-max="100"></div>
     </li>
     <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
       <div data-id="containers" data-view="List" data-unordered="true" data-title="Running Container List"</div>
     </li>
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+    <li data-row="2" data-col="3" data-sizex="1" data-sizey="1">
       <div data-id="count" data-view="Number" data-title="Running Container"></div>
     </li>
-    <li data-row="2" data-col="3" data-sizex="2" data-sizey="1">
-      <div data-id="allcontainers" data-view="List" data-unordered="true" data-title="All Container List"</div>
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="allcontainers" data-view="Number" data-title="All Containers"></div>
     </li>
   </ul>
 </div>
