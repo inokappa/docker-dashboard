@@ -1,25 +1,28 @@
 require 'docker'
-run_docker_list = Hash.new({ value: 0 })
-all_docker_list = Hash.new({ value: 0 })
 #
 SCHEDULER.every '10s' do 
   # Please Change Docker API ENDPOINT
   Docker.url='http://127.0.0.1:4243/'
   #
   cons_run = Docker::Container.all(:running => true)
-  cons_all = Docker::Container.all(:all => true)
   docker_ver = Docker.version
   docker_info = Docker.info
   #
-  cons_run.each do |con|
-    docker_id = con.id[0,12]
-    docker_image = con.info.fetch("Image")
-    run_docker_list[docker_id] = { label: docker_id, value: docker_image }
-    send_event('containers', { items: run_docker_list.values })
+  if cons_run.nil? then
+    send_event('containers', { items: run_docker_list })
+  else
+    p cons_run
+    run_docker_list = Hash.new({ value: 0 })
+    cons_run.each do |con|
+      docker_id = con.id[0,12]
+      p docker_id
+      docker_image = con.info.fetch("Image")
+      p docker_image
+      run_docker_list[docker_id] = { label: docker_id, value: docker_image }
+      send_event('containers', { items: run_docker_list.values })
+      p run_docker_list.values
+    end
   end
-  #
-  count = (cons_run.size.to_f / cons_all.size.to_f) * 100
-  send_event('countmater', { value: count.round } )
   send_event('count', { current: cons_run.size } )
   #
   mem_t = %x[ cat /proc/meminfo | grep MemTotal: | awk '{print $2}' ]
